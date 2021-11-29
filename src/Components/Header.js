@@ -51,6 +51,7 @@ function Header() {
                 <div className='banner-text'>
                     <Fade bottom duration={1200}>
                         <h1 className='responsive-headline'>Colour Hair</h1>
+                        <p>...a brand of Tip Best</p>
                         <h3>
                             You define your hair, Get whant you desire<br /> 
                            <b> Get Login now!</b>{' '}

@@ -6,7 +6,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState('hair');
-    const [cocktails, setCocktails] = useState([]);
+    const [hair, sethair] = useState([]);
 
     const fetchDrinks = useCallback(async () => {
         
@@ -17,7 +17,7 @@ const AppProvider = ({ children }) => {
             const { results } = data;
 
             if (results) {
-                const newCocktails = results.map((item) => {
+                const newhair = results.map((item) => {
                     const { user, links } = item;
                     const { location, last_name, profile_image } = user;
                     const { download } = links;
@@ -30,9 +30,9 @@ const AppProvider = ({ children }) => {
                         medium,
                     };
                 });
-                setCocktails(newCocktails);
+                sethair(newhair);
             } else {
-                setCocktails([]);
+                sethair([]);
             }
             
         } catch (error) {
@@ -43,7 +43,7 @@ const AppProvider = ({ children }) => {
         fetchDrinks();
     }, [searchTerm, fetchDrinks]);
     return (
-        <AppContext.Provider value={{  cocktails, searchTerm, setSearchTerm }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{  hair, searchTerm, setSearchTerm }}>{children}</AppContext.Provider>
     );
 };
 

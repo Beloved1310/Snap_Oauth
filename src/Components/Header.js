@@ -3,13 +3,27 @@ import ParticlesBg from 'particles-bg';
 import Fade from 'react-reveal';
 import ScriptTag from 'react-script-tag';
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
+
+
+const snapLogin = function (d, s, id) {
+    var js,
+        sjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'https://sdk.snapkit.com/js/v1/login.js';
+    sjs.parentNode.insertBefore(js, sjs);
+};
+
+
 
 function Header() {
-    const Demo = async (props) => (<ScriptTag type='text/javascript' src='../../public/js/script.js' />)();
-    console.log(Demo)
-    const currentLocation = new URL(window.location.href);
-    const authorizationCode = currentLocation.searchParams.get('access_token');
-    console.log(authorizationCode)
+    useEffect(() => {
+        snapLogin(document, 'script', 'loginkit-sdk');
+    }, []);
+
+   
     return (
         <header id='home'>
             <ParticlesBg type='circle' bg={true} />
@@ -36,10 +50,10 @@ function Header() {
             <div className='row banner'>
                 <div className='banner-text'>
                     <Fade bottom duration={1200}>
-                        <h1 className='responsive-headline'>CONTENT KING</h1>
+                        <h1 className='responsive-headline'>Colour Hair</h1>
                         <h3>
-                            We believe the world is created by colours of your writing<br></br> Get Started By Clicking
-                            the Icon Below!{' '}
+                            You define your hair, Get whant you desire<br /> 
+                           <b> Get Login now!</b>{' '}
                         </h3>
                     </Fade>
 
@@ -60,11 +74,7 @@ function Header() {
                 </div>
             </div>
 
-            <p className='scrolldown'>
-                <a className='smoothscroll' href='#about'>
-                    <i className='icon-down-circle'></i>
-                </a>
-            </p>
+            
         </header>
     );
 }

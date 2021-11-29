@@ -25,6 +25,11 @@ time, mark, audio, video {
    vertical-align: baseline;
    background: transparent;
 }
+.row .twelve      { width: 100%; }
+
+.row.collapsed > .column,
+.row.collapsed > .columns,
+.column.collapsed, .columns.collapsed  { padding: 0; }
 
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
@@ -120,7 +125,7 @@ li { line-height: 18px; margin-bottom: 12px; }
 ul.large li { }
 li p { }
 
-/
+
 
 img {
    max-width: 100%;
@@ -196,9 +201,18 @@ input::-moz-focus-inner {
     border: 0;
     padding: 0;
 }
+.column, .columns {
+   position: relative;
+   padding: 0 20px;
+   min-height: 1px;
+   float: left;
+}
 
 
-
+.column.centered, .columns.centered  {
+    float: none;
+    margin: 0 auto;
+} 
 /* ---------------------------------------------------------------  */
 
 /* mobile wide/smaller tablets

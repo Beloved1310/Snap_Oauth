@@ -2,10 +2,14 @@ import React from 'react';
 import ParticlesBg from 'particles-bg';
 import Fade from 'react-reveal';
 import ScriptTag from 'react-script-tag';
+import { Link } from 'react-router-dom'
 
 function Header() {
-    const Demo = (props) => (<ScriptTag type='text/javascript' src='../../public/js/script.js' />)();
-
+    const Demo = async (props) => (<ScriptTag type='text/javascript' src='../../public/js/script.js' />)();
+    console.log(Demo)
+    const currentLocation = new URL(window.location.href);
+    const authorizationCode = currentLocation.searchParams.get('access_token');
+    console.log(authorizationCode)
     return (
         <header id='home'>
             <ParticlesBg type='circle' bg={true} />
@@ -20,9 +24,11 @@ function Header() {
 
                 <ul id='nav' className='nav'>
                     <li className='current'>
-                        <a className='smoothscroll' href='#home'>
-                            Home
-                        </a>
+                    <Link to='/' className='smoothscroll'>Home</Link>
+                        
+                    </li>
+                    <li className='current'>
+                    <Link to='/oauth' className='smoothscroll'>Gallary</Link>
                     </li>
                 </ul>
             </nav>
